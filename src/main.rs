@@ -5,12 +5,21 @@ fn main(){
    }
    let x:i32 = 7;
     fn_hello(x);
+
+    let b = hello_string();
+
+    println!("{}", b);
  }
  
  
  fn fn_hello(x:i32){
     println!("{} is the answer. Hello from function fn_hello() ", x);
  }
+
+ fn hello_string<'life>() -> &'life str {
+    let s = "hello world";
+    return s;
+}
  
  pub fn add(a: i32, b: i32) -> i32 {
      a + b
@@ -38,5 +47,11 @@ fn main(){
          // This assert would fire and test will fail.
          // Please note, that private functions can be tested too!
          assert_eq!(bad_add(1, 2), 3);
+     }
+
+     #[test]
+     fn test_hello_string() {
+        let p = hello_string();
+        assert_eq!(p, "hello world");
      }
  }

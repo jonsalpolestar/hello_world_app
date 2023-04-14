@@ -7,7 +7,6 @@ fn main(){
     fn_hello(x);
 
     let b = hello_string();
-
     println!("{}", b);
  }
  
@@ -51,7 +50,6 @@ fn main(){
 
      #[test]
      fn test_hello_string() {
-        let p = hello_string();
-        assert_eq!(p, "hello world");
+        assert_eq!(hello_string(), "hello world");
      }
  }

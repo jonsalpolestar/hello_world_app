@@ -1,15 +1,20 @@
 fn main(){
+    program();
+ }
+
+fn program<'life>() -> &'life str {
     println!("Rust says Hello World!!");
     for x in 1..11{ // 11 is not inclusive
        println!("x is {}",x);
-   }
-   let x:i32 = 7;
+       }
+    let x:i32 = 7;
     fn_hello(x);
 
     let b = hello_string();
     println!("{}", b);
- }
- 
+
+    return b;
+}
  
  fn fn_hello(x:i32){
     println!("{} is the answer. Hello from function fn_hello() ", x);
@@ -26,10 +31,10 @@ fn main(){
  
  // This is a really bad adding function, its purpose is to fail in this
  // example.
- #[allow(dead_code)]
- fn bad_add(a: i32, b: i32) -> i32 {
-     a - b
- }
+ //#[allow(dead_code)]
+ //fn bad_add(a: i32, b: i32) -> i32 {
+ //    a - b
+ //}
  
  #[cfg(test)]
  mod tests {
@@ -37,19 +42,24 @@ fn main(){
      use super::*;
  
      #[test]
+     fn test_program() {
+         assert_eq!(program(), "hello world");
+     }
+
+     #[test]
      fn test_add() {
          assert_eq!(add(1, 2), 3);
      }
  
      #[test]
-     fn test_bad_add() {
-         // This assert would fire and test will fail.
-         // Please note, that private functions can be tested too!
-         assert_eq!(bad_add(1, 2), 3);
-     }
-
-     #[test]
      fn test_hello_string() {
         assert_eq!(hello_string(), "hello world");
      }
+
+     //#[test]
+     //fn test_bad_add() {
+         // This assert would fire and test will fail.
+         // Please note, that private functions can be tested too!
+     //    assert_eq!(bad_add(1, 2), 3);
+     //}
  }

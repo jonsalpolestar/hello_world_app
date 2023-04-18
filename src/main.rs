@@ -28,13 +28,7 @@ fn program<'life>() -> &'life str {
  pub fn add(a: i32, b: i32) -> i32 {
      a + b
  }
- 
- // This is a really bad adding function, its purpose is to fail in this
- // example.
- //#[allow(dead_code)]
- //fn bad_add(a: i32, b: i32) -> i32 {
- //    a - b
- //}
+
  
  #[cfg(test)]
  mod tests {
@@ -55,11 +49,4 @@ fn program<'life>() -> &'life str {
      fn test_hello_string() {
         assert_eq!(hello_string(), "hello world");
      }
-
-     //#[test]
-     //fn test_bad_add() {
-         // This assert would fire and test will fail.
-         // Please note, that private functions can be tested too!
-     //    assert_eq!(bad_add(1, 2), 3);
-     //}
  }
